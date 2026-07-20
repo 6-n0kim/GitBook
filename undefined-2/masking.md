@@ -46,5 +46,3 @@ plt.imshow(img_mask)
 plt.axis("off")
 plt.show()
 ```
-
-<figure><img src="../.gitbook/assets/image (8).png" alt="" width="540"><figcaption></figcaption></figure>

@@ -71,5 +71,3 @@ plt.imshow(cv2.cvtColor(np_img, cv2.COLOR_BGR2RGB))
 plt.axis("off")
 plt.show()
 ```
-
-<figure><img src="../.gitbook/assets/image (6).png" alt=""><figcaption></figcaption></figure>

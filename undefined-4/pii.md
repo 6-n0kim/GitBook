@@ -39,5 +39,3 @@ def anonymize_delete(text, spans):
 text_deleted = anonymize_delete(text, unique_spans)
 print("삭제 결과:\n", text_deleted)
 ```
-
-<figure><img src="../.gitbook/assets/image (20).png" alt=""><figcaption></figcaption></figure>

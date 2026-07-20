@@ -46,5 +46,3 @@ for label, start, end, orig in sorted(unique_spans, key=lambda x: x[1], reverse=
 print("\n수정된 전체 텍스트:")
 print(result)
 ```
-
-<figure><img src="../.gitbook/assets/image (23).png" alt=""><figcaption></figcaption></figure>

@@ -52,8 +52,6 @@ for ent in ner_spans:
     print(f"{ent['entity_group']:6s} {ent['start']:4d}-{ent['end']:4d}  “{ent['word']}”")
 ```
 
-<figure><img src="../.gitbook/assets/image (25).png" alt="" width="292"><figcaption></figcaption></figure>
-
 ```python
 import re
 
@@ -113,5 +111,3 @@ print("NER + 정규식으로 합쳐진 개인정보 탐지 결과:")
 for val, label, start, end in unique_pii_spans:
     print(f"{label:6s} {start:4d}-{end:4d}  “{val}”")
 ```
-
-<figure><img src="../.gitbook/assets/image (12).png" alt=""><figcaption></figcaption></figure>

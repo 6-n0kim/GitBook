@@ -56,8 +56,6 @@ for i,(label,start,end,val) in enumerate(ner_spans):
     print(f"{i}. [{label}] “{val}” ({start}-{end})")
 ```
 
-<figure><img src="../.gitbook/assets/image (17).png" alt="" width="412"><figcaption></figcaption></figure>
-
 ```python
 import re
 
@@ -85,8 +83,6 @@ for i,(label,start,end,val) in enumerate(regex_spans):
     print(f"{i}. [{label}] “{val}” ({start}-{end})")
 ```
 
-<figure><img src="../.gitbook/assets/image (18).png" alt=""><figcaption></figcaption></figure>
-
 ```python
 # 두 결과를 하나로 합치기
 all_spans = ner_spans + regex_spans
@@ -107,5 +103,3 @@ print("통합된 PII (NER+regex):")
 for i, (label,start,end,val) in enumerate(unique_spans):
     print(f"{i}. [{label}] “{val}” ({start}-{end})")
 ```
-
-<figure><img src="../.gitbook/assets/image (19).png" alt=""><figcaption></figcaption></figure>

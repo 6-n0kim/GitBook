@@ -43,5 +43,3 @@ print("원본 텍스트:\n", text)
 ```
 
 \[출력 결과]
-
-<figure><img src="../.gitbook/assets/image (16).png" alt=""><figcaption></figcaption></figure>

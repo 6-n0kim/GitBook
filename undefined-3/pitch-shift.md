@@ -54,5 +54,3 @@ buf2.seek(0)
 print("변조된 음성 재생:")
 display(Audio(data=buf2.read(), rate=transformed.frame_rate))
 ```
-
-<figure><img src="../.gitbook/assets/image (14).png" alt=""><figcaption></figcaption></figure>

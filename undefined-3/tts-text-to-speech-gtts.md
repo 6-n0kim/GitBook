@@ -60,5 +60,3 @@ buf.seek(0)
 print("\nTTS 합성된 음성 재생:")
 display(Audio(data=buf.read(), rate=24000))
 ```
-
-<figure><img src="../.gitbook/assets/image (15).png" alt="" width="559"><figcaption></figcaption></figure>
