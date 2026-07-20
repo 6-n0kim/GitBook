@@ -23,7 +23,7 @@ layout:
 
 ### **4. 삐(beep) 처리**
 
-* PII가 포함된 구간에 맞게 ‘삐\~’소리로 대체합니다.
+* PII가 포함된 구간에 맞게  ‘삐\~’소리로 대체합니다.
 * 개인정보를 음성에서 완전히 숨겨, 남용·유출 위험을 제거하기 위함입니다.
 
 ```python
@@ -95,3 +95,5 @@ print("원본 비교:")
 buf_orig.seek(0)
 display(Audio(data=buf_orig.read(), rate=original_audio.frame_rate))
 ```
+
+<figure><img src="../.gitbook/assets/image (13).png" alt=""><figcaption></figcaption></figure>

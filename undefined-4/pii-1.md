@@ -38,3 +38,5 @@ def anonymize_mask(text, spans):
 text_masked = anonymize_mask(text, unique_spans)
 print("마스킹 결과:\n", text_masked)
 ```
+
+<figure><img src="../.gitbook/assets/image (21).png" alt=""><figcaption></figcaption></figure>

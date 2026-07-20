@@ -36,3 +36,5 @@ audio_path = list(upload.keys())[0]
 
 print("file_name:", audio_path)
 ```
+
+<figure><img src="../.gitbook/assets/image (9).png" alt=""><figcaption></figcaption></figure>

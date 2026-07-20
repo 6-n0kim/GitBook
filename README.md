@@ -21,7 +21,6 @@ layout:
 ---
 
 # 비정형 데이터 비식별 실습
-<figure><img src=".gitbook/assets/화면 캡처 2025-08-09 145855.png" alt="" width="254"><figcaption></figcaption></figure>
 
 ## Google Coliboratory 설치
 

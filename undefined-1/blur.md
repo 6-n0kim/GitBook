@@ -60,3 +60,5 @@ def show_blurred(idx):
 slider = widgets.IntSlider(value=0, min=0, max=len(blurred_frames)-1, step=1, description='Frame:')
 widgets.interact(show_blurred, idx=slider)
 ```
+
+<figure><img src="../.gitbook/assets/image (3).png" alt="" width="563"><figcaption></figcaption></figure>

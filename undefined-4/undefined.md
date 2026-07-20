@@ -16,3 +16,5 @@ def anonymize_classify(text, spans):
 text_classified = anonymize_classify(text, unique_spans)
 print("클래스 치환 결과:\n", text_classified)
 ```
+
+<figure><img src="../.gitbook/assets/image (22).png" alt=""><figcaption></figcaption></figure>

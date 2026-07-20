@@ -64,3 +64,5 @@ df = pd.DataFrame(word_rows)
 print("단어별 타임스탬프:\n")
 display(df)
 ```
+
+<figure><img src="../.gitbook/assets/image (10).png" alt="" width="368"><figcaption></figcaption></figure>
