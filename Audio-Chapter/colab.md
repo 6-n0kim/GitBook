@@ -26,6 +26,8 @@ layout:
 1. Colab 좌측 사이드바의 📁 \[파일] 아이콘을 클릭합니다.
 2. 구글 드라이브에서 로컬에 받은 'audio\_01.wav' 파일(또는 02, 03)을 좌측 파일 탐색기 창으로 \[드래그 앤 드롭] 해주세요.
 
+<figure><img src="../.gitbook/assets/오디오업로드.png" alt=""><figcaption></figcaption></figure>
+
 ```python
 import os
 from IPython.display import display, Audio
@@ -40,5 +42,3 @@ else:
   print(f"'{audio_path}' 오디오 로드 완료!")
   display(Audio(audio_path))
 ```
-
-<figure><img src="../.gitbook/assets/오디오업로드.png" alt=""><figcaption></figcaption></figure>
