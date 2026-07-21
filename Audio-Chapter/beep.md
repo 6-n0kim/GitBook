@@ -27,73 +27,62 @@ layout:
 * 개인정보를 음성에서 완전히 숨겨, 남용·유출 위험을 제거하기 위함입니다.
 
 ```python
-!pip install -q pydub
-```
-
-```python
+import re
 from io import BytesIO
-from IPython.display import Audio, display
 from pydub import AudioSegment
 from pydub.generators import Sine
-import math
+from IPython.display import display, Audio
 
-# 원본 오디오 로드
-original_audio = AudioSegment.from_file(audio_path) # mp3/wav 등 지원
+# 1. PII 단어와 매칭되는 오디오 타임스탬프(ms 단위) 추출
+mask_intervals = []
 
-# 개인정보가 포함된 단어들의 정확한 start/end(ms) 구간 수집
-beep_ranges_ms = []
+for pii in unique_pii_spans:
+    pii_clean = re.sub(r'[^\w\s]', '', pii["word"]) # 특수문자 제거
+    for idx, row in df_words.iterrows():
+        word_clean = re.sub(r'[^\w\s]', '', row["단어"])
+        if word_clean and (word_clean in pii_clean or pii_clean in word_clean):
+            start_ms = int(row["시작(초)"] * 1000)
+            end_ms = int(row["끝(초)"] * 1000)
+            mask_intervals.append((start_ms, end_ms))
 
-# 세그먼트 단위로 돌며 PII 포함 구간만 삐로 교체
-for seg in timestamp:
-    # 각 segment 안의 단어별 타임스탬프
-    for word in seg.get("words", []):
-        word_text = word["word"].strip()
-        word_start_ms = int(float(word["start"]) * 1000)
-        word_end_ms   = int(float(word["end"]) * 1000)
+# 2. 오디오 로드 및 Beep 음 생성 함수
+sound = AudioSegment.from_file(audio_path)
 
-        # PII 리스트에서 동일 단어나 포함관계가 있으면 삐 처리 구간으로 추가
-        for pii_text, _, _, _ in unique_pii_spans:
-            if pii_text.strip() in word_text or word_text in pii_text.strip():
-                beep_ranges_ms.append((word_start_ms, word_end_ms))
+def generate_beep(duration_ms):
+    return Sine(1000).to_audio_segment(duration=duration_ms).apply_gain(-3)
 
-# 중복 제거(set) 후, 시작 시점 기준으로 오름차순 정렬
-beep_ranges_ms = sorted(set(beep_ranges_ms), key=lambda x: x[0])
+# 3. 구간별 Beep 마스킹 조립
+processed_sound = AudioSegment.empty()
+current_pos = 0
 
-# 삐 처리된 최종 AudioSegment
-output = AudioSegment.empty()
-last_end = 0
+# 타임스탬프 순 정렬
+sorted_intervals = sorted(mask_intervals, key=lambda x: x[0])
 
-for start_ms, end_ms in beep_ranges_ms:
-    output += original_audio[last_end:start_ms] # PII 전까지 원본 이어붙이기
+for start_ms, end_ms in sorted_intervals:
+    if start_ms > current_pos:
+        processed_sound += sound[current_pos:start_ms]
+
     duration = end_ms - start_ms
-    # 구간 길이에 딱 맞는 삐 생성
     if duration > 0:
-        output += (
-            Sine(1000).to_audio_segment(duration=duration)
-            .set_frame_rate(original_audio.frame_rate)
-            .set_channels(original_audio.channels)
-            .set_sample_width(original_audio.sample_width)
-        )
-    last_end = end_ms
+        processed_sound += generate_beep(duration)
+        current_pos = end_ms
 
-# 마지막 PII 뒤 남은 원본 음성 붙이기
-output += original_audio[last_end:]
+if current_pos < len(sound):
+    processed_sound += sound[current_pos:]
 
-# BytesIO 버퍼에 WAV 컨테이너로 export
-buf = BytesIO()
-output.export(buf, format="wav")
+# 4. 결과 저장 및 재생
+output_filename = f"masked_beep_{audio_path}"
+processed_sound.export(output_filename, format="wav")
 
-# 재생을 위해 포인터를 처음으로 되돌리고, full WAV 바이트를 Audio에 넘김
-print("개인정보 구간을 Beep 처리한 결과:")
-buf.seek(0)
-display(Audio(data=buf.read(), rate=output.frame_rate))
+print(f"🔒 [비식별화 완료] 결과 파일: {output_filename}")
+display(Audio(output_filename))
 
 # 비교용 원본 오디오도 동일 방식으로 재생
 buf_orig = BytesIO()
-original_audio.export(buf_orig, format="wav")
+sound.export(buf_orig, format="wav")
 print("원본 비교:")
 buf_orig.seek(0)
-display(Audio(data=buf_orig.read(), rate=original_audio.frame_rate))
+display(Audio(data=buf_orig.read(), rate=sound.frame_rate))
 ```
 
-<figure><img src="../.gitbook/assets/image (13).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/오디오Beep.png" alt=""><figcaption></figcaption></figure>

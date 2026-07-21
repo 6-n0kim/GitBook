@@ -21,11 +21,7 @@ layout:
 
 # STT(Speech-to-Text) - Whisper
 
-```python
-!pip uninstall -y torch torchvision torchaudio
-!pip cache purge
-!pip install torch==2.6.0 torchvision==0.21.0 torchaudio==2.6.0 --index-url https://download.pytorch.org/whl/cu118
-```
+
 
 ### **2. STT (Whisper)**
 
@@ -34,6 +30,10 @@ layout:
 
 ```python
 !pip install -q openai-whisper # STT 라이브러리 다운로드
+!pip install -q transformers==4.44.2 pydub==0.25.1 soundfile==0.12.1 pandas==2.2.2
+!apt-get install -y ffmpeg -qq
+
+print("✅ 모든 라이브러리 및 ffmpeg 시스템 패키지 설치 완료!")
 ```
 
 ```python
@@ -41,28 +41,32 @@ import whisper
 import pandas as pd
 from IPython.display import display
 
-# 모델 로드 (base, small, medium 중 선택)
+# 1. Whisper base 모델 로드
 model = whisper.load_model("base")
 
-# 음성 -> 텍스트 + 세그먼트(timestamp) 추출(각 단어별로 word, start, end, duration)
+# 2. 음성 ➔ 텍스트 변환 및 단어 단위 타임스탬프 추출
 result = model.transcribe(audio_path, word_timestamps=True)
-full_text = result["text"] # 전체 텍스트
-print("전체 텍스트:\n", full_text)
+full_text = result["text"]
 
+print("▼ 전체 STT 변환 텍스트:")
+print(full_text)
+print("\n" + "="*50 + "\n")
+
+# 3. 단어별 타임스탬프 데이터프레임 구성
 timestamp = result["segments"] # 구간(문장/절) 리스트
-word_rows = [] # 단어별(Word-level) 정보를 담을 리스트
+word_rows = []
 for seg in timestamp:
     for word in seg.get("words", []):
         word_rows.append({
-            "단어": word["word"].strip(), # 단어 문자열 (양쪽 공백 제거)
+            "단어": word["word"].strip(),
             "시작(초)": round(float(word["start"]), 2),
             "끝(초)": round(float(word["end"]), 2),
-            "길이(초)": round(float(word["end"] - word["start"]), 2) # 단어 길이(초)
+            "길이(초)": round(float(word["end"] - word["start"]), 2)
         })
 
-df = pd.DataFrame(word_rows)
-print("단어별 타임스탬프:\n")
-display(df)
+df_words = pd.DataFrame(word_rows)
+print("▼ 단어별 타임스탬프 표:")
+display(df_words)
 ```
 
-<figure><img src="../.gitbook/assets/image (10).png" alt="" width="368"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/오디오STT.png" alt="" width="368"><figcaption></figcaption></figure>

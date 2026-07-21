@@ -29,24 +29,50 @@ layout:
 * 속도 느려짐 현상은 pydub.effects.speedup(내부적으로 ffmpeg atempo)로 속도만 역보정하면 됩니다.(제외)
 
 ```python
-from io import BytesIO
-from IPython.display import Audio, display
+import io
+import librosa
+import numpy as np
+from IPython.display import Audio
 from pydub import AudioSegment
 
+
 # Pitch shift 함수: 옥타브 단위 (-1.0 낮추기, +1.0 높이기)
-def pitch_shift(sound: AudioSegment, octaves: float) -> AudioSegment:
-    new_rate = int(sound.frame_rate * (2.0 ** octaves))
-    shifted = sound._spawn(sound.raw_data, overrides={'frame_rate': new_rate})
+# 속도(1.0배)는 그대로 유지하면서 피치만 변경하도록 내부 구현 수정
+def pitch_shift(seg: AudioSegment, octaves: float) -> AudioSegment:
+    # 1. AudioSegment를 numpy float 배열로 변환
+    samples = np.array(seg.get_array_of_samples(), dtype=np.float32)
 
-    return shifted.set_frame_rate(sound.frame_rate)
+    # 다채널(Stereo) 대응
+    if seg.channels > 1:
+        samples = samples.reshape((-1, seg.channels)).T
 
-# 변조 적용
+    # 정규화 (-1.0 ~ 1.0 범위)
+    max_val = float(1 << (8 * seg.sample_width - 1))
+    samples /= max_val
+
+    # 2. 피치 변경 (1 옥타브 = 12 반음(semitones))
+    n_steps = octaves * 12.0
+    shifted = librosa.effects.pitch_shift(
+        y=samples, sr=seg.frame_rate, n_steps=n_steps
+    )
+
+    # 3. 원래 정수형(int16 등) 데이터로 재복원
+    if seg.channels > 1:
+        shifted = shifted.T.reshape(-1)
+
+    shifted_int = np.clip(shifted * max_val, -max_val, max_val - 1).astype(
+        np.int16 if seg.sample_width == 2 else np.int32
+    )
+
+    # 4. 기존 오디오의 속도/샘플레이트를 유지한 채 AudioSegment 생성
+    return seg._spawn(shifted_int.tobytes())
+
+# 변조 적용 (-0.5 옥타브 적용 시 속도는 1.0배 유지됨)
 print("Pitch-shifting 음성 변조 중...")
-# output: 앞서 삐 처리된 AudioSegment / 높은 음으로 변경 시 octaves를 양수로 변경
-transformed = pitch_shift(output, octaves=-0.5)
+transformed = pitch_shift(processed_sound, octaves=-0.5)
 
 # 메모리상 WAV 컨테이너로 export
-buf2 = BytesIO()
+buf2 = io.BytesIO()
 transformed.export(buf2, format="wav")
 buf2.seek(0)
 
@@ -55,4 +81,4 @@ print("변조된 음성 재생:")
 display(Audio(data=buf2.read(), rate=transformed.frame_rate))
 ```
 
-<figure><img src="../.gitbook/assets/image (14).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/오디오변조.png" alt=""><figcaption></figcaption></figure>

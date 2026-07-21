@@ -21,97 +21,114 @@ layout:
 
 # NER + 정규식 PII 검출
 
-### 3. **NER(Named Entity Recognition) + 정규식(Regex)으로 개인정보 검출**
+### 3. **NER(KoELECTRA) + 정규표현식(Regex) 개인정보(PII) 탐지**
+-  
+  1) 한국어 특화 KoELECTRA KLUE‑NER 모델로 텍스트 내 사람(PER), 기관(ORG), 지명(LOC), 날짜(DATE) 같은 의미 있는 객체를 찾습니다.  
+  2) 정규식은 전화번호·이메일·주민등록번호처럼 형식이 명확한 PII를 정확하게 추가 검출합니다.
+  3) NER과 정규표현식에서 중복으로 탐지된 객체를 제거합니다.
 
-* 1\) 한국어 특화 KoELECTRA KLUE‑NER 모델로 텍스트 내 사람(PER), 기관(ORG), 지명(LOC), 날짜(DATE) 같은 의미 있는 객체를 찾습니다.\
-  2\) 정규식은 전화번호·이메일·주민등록번호처럼 형식이 명확한 PII를 정확하게 추가 검출합니다.
-* 사람 "이름”== NER, “010-1234-5678” == regex가 더 정확하므로 두 방법을 병행하면 서로 보완하여 탐지 성능이 크게 향상됩니다.
+-
+  사람 "이름”== NER, “010-1234-5678” == regex가 더 정확하므로 두 방법을 병행하면 서로 보완하여 탐지 성능이 크게 향상됩니다.
 
+#### **NER 모델로 개인정보 탐지 - named entity recognition**
 ```python
+import re
 from transformers import AutoTokenizer, AutoModelForTokenClassification, pipeline
 
-# NER 모델 로드(한국어 특화)
+# 1) NER 모델 로드 (인명, 기관명, 지명 탐지) - named entity recognition
 model_name = "soddokayo/koelectra-base-klue-ner"
-# 토크나이저와 모델 불러오기
 tokenizer = AutoTokenizer.from_pretrained(model_name)
-model = AutoModelForTokenClassification.from_pretrained(model_name)
+ner_model = AutoModelForTokenClassification.from_pretrained(model_name)
 
-# 파이프라인 구성
 ner_pipe = pipeline(
-    task="ner",             # 토큰 단위로 엔티티 인식
-    model=model,
+    task="ner",
+    model=ner_model,
     tokenizer=tokenizer,
-    grouped_entities=True   # "홍 길 동" → "홍길동"
+    aggregation_strategy="simple"
 )
 
-# STT 방법으로 얻은 텍스트 입력
 ner_spans = ner_pipe(full_text)
 
-# 결과 출력
+# NER 결과 정제 (##Subword 토큰 제거)
+for ent in ner_spans:
+    ent['word'] = ent['word'].replace("##", "").strip()
+
+# 인명(PS) 뒤 조사 제거
+def clean_person_particles(spans):
+    particles = ["에게", "한테", "께서", "이", "가", "은", "는", "을", "를", "와", "과", "도", "만", "의"]
+    particles_sorted = sorted(particles, key=len, reverse=True)
+
+    cleaned = []
+    for ent in spans:
+        if ent.get("entity_group") == "PS":
+            word = ent["word"]
+            end = ent["end"]
+            for p in particles_sorted:
+                if word.endswith(p) and len(word) > len(p):
+                    word = word[: -len(p)]
+                    end -= len(p)
+                    break
+            ent = {**ent, "word": word, "end": end}
+        cleaned.append(ent)
+    return cleaned
+
+ner_spans = clean_person_particles(ner_spans)
+
+print("NER 모델로 탐지된 객체 :")
 for ent in ner_spans:
     print(f"{ent['entity_group']:6s} {ent['start']:4d}-{ent['end']:4d}  “{ent['word']}”")
 ```
+<figure><img src="../.gitbook/assets/오디오NER.png" alt=""><figcaption></figcaption></figure>
 
-<figure><img src="../.gitbook/assets/image (25).png" alt="" width="292"><figcaption></figcaption></figure>
-
+#### **정규표현식 패턴 정의 및 탐지 - Regex**
 ```python
-import re
-
-# 정규식 패턴 정의: (패턴, 라벨)
+# 2) STT 텍스트 특성에 맞춘 정규표현식 패턴
 patterns = [
-    (r"\b01[016789]-\d{3,4}-\d{4}\b", "PHONE"),
-    (r"\b[\w\.-]+@[\w\.-]+\.\w+\b", "EMAIL"),
-    (r"\b\d{6}-\d{7}\b", "RRN"),
+    (r"01[016789][\s\.-]*\d{3,4}[\s\.-]*\d{4}", "PHONE"),
+    (r"\b\d{6}[\s\.-]*[1-4]\d{6}\b", "RRN"),
+    (r"[\w\.-]+@[\w\.-]+\.\w+", "EMAIL"),
+    (r"\b\d{2,6}(?:[\s\.-]\d{2,6}){1,4}\b", "NUMBER"),
 ]
 
-# 정규식으로 탐지된 결과 리스트
 regex_spans = []
-
 for pattern, label in patterns:
     for match in re.finditer(pattern, full_text):
-        regex_spans.append((
-            match.group(),     # 탐지된 문자열
-            label,             # 라벨 (PHONE, EMAIL, RRN)
-            match.start(),     # 시작 위치
-            match.end()        # 끝 위치
-        ))
+        regex_spans.append({
+            "entity_group": label,
+            "word": match.group(),
+            "start": match.start(),
+            "end": match.end()
+        })
 
-# 결과 출력
-print("정규식으로 찾은 개인정보:")
-for val, label, start, end in regex_spans:
-    print(f"{label:6s} {start:4d}-{end:4d}  “{val}”")
+print("\n정규식으로 찾은 객체:")
+for ent in regex_spans:
+    print(f"{ent['entity_group']:6s} {ent['start']:4d}-{ent['end']:4d}  “{ent['word']}”")
 ```
+<figure><img src="../.gitbook/assets/오디오Regex.png" alt=""><figcaption></figcaption></figure>
 
+#### **중복 구간 제거 및 병합 - Merge**
 ```python
-# 두 결과를 하나로 합치기
-pii_spans = ner_spans + regex_spans
+# 3) 구간 중복/포함 관계 해결
+def remove_overlapping_spans(spans):
+    sorted_spans = sorted(spans, key=lambda x: (x['end'] - x['start']), reverse=True)
+    kept_spans = []
+    for current in sorted_spans:
+        overlap = False
+        for accepted in kept_spans:
+            if max(current['start'], accepted['start']) < min(current['end'], accepted['end']):
+                overlap = True
+                break
+        if not overlap:
+            kept_spans.append(current)
+    return sorted(kept_spans, key=lambda x: x['start'])
 
-# 중복 제거
-unique_pii_spans = []
-seen = set()
+all_spans = ner_spans + regex_spans
+unique_pii_spans = remove_overlapping_spans(all_spans)
 
-for span in pii_spans:
-    # 딕셔너리 기반 처리
-    if isinstance(span, dict):
-        key = (span["start"], span["end"])
-        val = span["word"]
-        label = span.get("entity_group", "UNK")
-    else:
-        # 튜플 기반 처리
-        val, label, start, end = span
-        key = (start, end)
-
-    if key not in seen:
-        seen.add(key)
-        if isinstance(span, dict):
-            unique_pii_spans.append((val, label, key[0], key[1]))
-        else:
-            unique_pii_spans.append(span)
-
-# 결과 출력
-print("NER + 정규식으로 합쳐진 개인정보 탐지 결과:")
-for val, label, start, end in unique_pii_spans:
-    print(f"{label:6s} {start:4d}-{end:4d}  “{val}”")
+print("\n🔍 [NER + 정규식 개인정보 탐지 결과]:")
+for pii in unique_pii_spans:
+    label = pii.get("entity_group", "UNK")
+    print(f"  - [{label:6s}] 위치({pii['start']:3d}~{pii['end']:3d}): “{pii['word']}”")
 ```
 
-<figure><img src="../.gitbook/assets/image (12).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/오디오Merge.png" alt=""><figcaption></figcaption></figure>
