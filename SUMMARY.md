@@ -16,7 +16,7 @@
 * [Colab 이미지 파일 업로드](Img-Chapter/colab.md)
 * [필요한 라이브러리 다운로드](Img-Chapter/lib.md)
 * [얼굴 + 번호판 탐지 후 바운딩 박스 그리기](Img-Chapter/+.md)
-* [바운딩 박스 좌표 구하기](Img-Chapter/bounding.md)
+* [바운딩 박스 좌표 구하기](undefined-1/undefined.md)
 * [blur(모자이크) 처리](Img-Chapter/blur.md)
 * [masking(마스크) 처리](Img-Chapter/masking.md)
 
