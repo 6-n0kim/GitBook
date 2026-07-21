@@ -30,7 +30,7 @@ layout:
 -
   사람 "이름”== NER, “010-1234-5678” == regex가 더 정확하므로 두 방법을 병행하면 서로 보완하여 탐지 성능이 크게 향상됩니다.
 
-#### **NER 모델로 개인정보 탐지 - named entity recognition**
+#### **3-1 NER 모델로 개인정보 탐지 - named entity recognition**
 ```python
 import re
 from transformers import AutoTokenizer, AutoModelForTokenClassification, pipeline
@@ -80,7 +80,7 @@ for ent in ner_spans:
 ```
 <figure><img src="../.gitbook/assets/오디오NER.png" alt=""><figcaption></figcaption></figure>
 
-#### **정규표현식 패턴 정의 및 탐지 - Regex**
+#### **3-2 정규표현식 패턴 정의 및 탐지 - Regex**
 ```python
 # 2) STT 텍스트 특성에 맞춘 정규표현식 패턴
 patterns = [
@@ -106,7 +106,7 @@ for ent in regex_spans:
 ```
 <figure><img src="../.gitbook/assets/오디오Regex.png" alt=""><figcaption></figcaption></figure>
 
-#### **중복 구간 제거 및 병합 - Merge**
+#### **3-3 중복 구간 제거 및 병합 - Merge**
 ```python
 # 3) 구간 중복/포함 관계 해결
 def remove_overlapping_spans(spans):

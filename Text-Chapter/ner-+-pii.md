@@ -21,7 +21,7 @@ layout:
 
 # NER + 정규식 PII 검출
 
-### 3. **NER(KoELECTRA) + 정규표현식(Regex) 개인정보(PII) 탐지**
+### 2. **NER(KoELECTRA) + 정규표현식(Regex) 개인정보(PII) 탐지**
 -  
   1) 한국어 특화 KoELECTRA KLUE‑NER 모델로 텍스트 내 사람(PER), 기관(ORG), 지명(LOC), 날짜(DATE) 같은 의미 있는 객체를 찾습니다.  
   2) 정규식은 전화번호·이메일·주민등록번호처럼 형식이 명확한 PII를 정확하게 추가 검출합니다.
@@ -30,7 +30,7 @@ layout:
 -
   사람 "이름”== NER, “010-1234-5678” == regex가 더 정확하므로 두 방법을 병행하면 서로 보완하여 탐지 성능이 크게 향상됩니다.
 
-#### **NER 모델로 개인정보 탐지 - named entity recognition**
+#### **2-1 NER 모델로 개인정보 탐지 - named entity recognition**
 ```python
 from transformers import AutoTokenizer, AutoModelForTokenClassification, pipeline
 
@@ -83,7 +83,7 @@ for i,(label,start,end,val) in enumerate(ner_spans):
 ```
 <figure><img src="../.gitbook/assets/텍스트NER.png" alt=""><figcaption></figcaption></figure>
 
-#### **정규표현식 패턴 정의 및 탐지 - Regex**
+#### **2-2 정규표현식 패턴 정의 및 탐지 - Regex**
 ```python
 import re
 
@@ -112,7 +112,7 @@ for i,(label,start,end,val) in enumerate(regex_spans):
 ```
 <figure><img src="../.gitbook/assets/텍스트Regex.png" alt=""><figcaption></figcaption></figure>
 
-#### **중복 구간 제거 및 병합 - Merge**
+#### **2-3 중복 구간 제거 및 병합 - Merge**
 ```python
 # 3) 구간 중복/포함 관계 해결
 def remove_overlapping_spans(spans):
