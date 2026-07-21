@@ -1,5 +1,5 @@
 ---
-icon: database
+icon: file-question-mark
 layout:
   width: default
   title:
@@ -27,6 +27,8 @@ layout:
 ## 실습 유형 선택
 
 ### [ 정형 데이터 비식별 실습 ](structured/README.md)
+### [ 정형 데이터 비식별 실습 ](../structured/README.md)
+### [ 정형 데이터 비식별 실습 ](./structured/README.md)
 
 ### [ 비정형 데이터 비식별 실습](unstructured/README.md)
 
