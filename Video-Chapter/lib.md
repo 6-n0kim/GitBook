@@ -35,9 +35,9 @@ torch 관련 다운로드및 버전 일
 !pip install -q --upgrade transformers pillow==11.0.0 matplotlib ultralytics facenet-pytorch==2.5.2
 ```
 
-자동차 번호판 탐지 모델(YOLOv26)
+자동차 번호판 탐지 모델(YOLOv8)
 
 ```python
 !wget https://huggingface.co/yasirfaizahmed/license-plate-object-detection/resolve/main/best.pt \
-     -O license_plate_yolov26.pt
+     -O license_plate_yolov8.pt
 ```
