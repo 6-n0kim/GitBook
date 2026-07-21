@@ -17,4 +17,4 @@ text_classified = anonymize_classify(text, unique_spans)
 print("클래스 치환 결과:\n", text_classified)
 ```
 
-<figure><img src="../.gitbook/assets/텍스트클래스.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/텍스트클래스.png" alt=""><figcaption></figcaption></figure>

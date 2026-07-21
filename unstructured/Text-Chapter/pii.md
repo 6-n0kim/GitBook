@@ -40,4 +40,4 @@ text_deleted = anonymize_delete(text, unique_spans)
 print("삭제 결과:\n", text_deleted)
 ```
 
-<figure><img src="../.gitbook/assets/텍스트삭제.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/텍스트삭제.png" alt=""><figcaption></figcaption></figure>

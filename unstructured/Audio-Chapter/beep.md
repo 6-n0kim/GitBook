@@ -85,4 +85,4 @@ buf_orig.seek(0)
 display(Audio(data=buf_orig.read(), rate=sound.frame_rate))
 ```
 
-<figure><img src="../.gitbook/assets/오디오Beep.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/오디오Beep.png" alt=""><figcaption></figcaption></figure>

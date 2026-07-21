@@ -69,4 +69,4 @@ print("▼ 단어별 타임스탬프 표:")
 display(df_words)
 ```
 
-<figure><img src="../.gitbook/assets/오디오STT.png" alt="" width="368"><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/오디오STT.png" alt="" width="368"><figcaption></figcaption></figure>

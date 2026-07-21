@@ -79,7 +79,7 @@ print("NER로 찾은 개인정보:")
 for i,(label,start,end,val) in enumerate(ner_spans):
     print(f"{i}. [{label}] “{val}” ({start}-{end})")
 ```
-<figure><img src="../.gitbook/assets/텍스트NER.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/텍스트NER.png" alt=""><figcaption></figcaption></figure>
 
 #### **2-2 정규표현식 패턴 정의 및 탐지 - Regex**
 ```python
@@ -108,7 +108,7 @@ print("정규식으로 찾은 개인정보:")
 for i,(label,start,end,val) in enumerate(regex_spans):
     print(f"{i}. [{label}] “{val}” ({start}-{end})")
 ```
-<figure><img src="../.gitbook/assets/텍스트Regex.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/텍스트Regex.png" alt=""><figcaption></figcaption></figure>
 
 #### **2-3 중복 구간 제거 및 병합 - Merge**
 ```python
@@ -144,4 +144,4 @@ for label, start, end, val in unique_pii_spans:
     print(f"  - [{label:6s}] 위치({start:3d}~{end:3d}): “{val}”")
 ```
 
-<figure><img src="../.gitbook/assets/텍스트Merge.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/텍스트Merge.png" alt=""><figcaption></figcaption></figure>

@@ -56,4 +56,4 @@ slider = widgets.IntSlider(value=0, min=0, max=len(frames)-1, step=1, descriptio
 widgets.interact(show_frame, idx=slider)
 ```
 
-<figure><img src="../.gitbook/assets/image (1).png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (1).png" alt="" width="563"><figcaption></figcaption></figure>

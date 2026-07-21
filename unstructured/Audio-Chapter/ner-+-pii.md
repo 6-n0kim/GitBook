@@ -76,7 +76,7 @@ print("NER 모델로 탐지된 객체 :")
 for ent in ner_spans:
     print(f"{ent['entity_group']:6s} {ent['start']:4d}-{ent['end']:4d}  “{ent['word']}”")
 ```
-<figure><img src="../.gitbook/assets/오디오NER.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/오디오NER.png" alt=""><figcaption></figcaption></figure>
 
 #### **3-2 정규표현식 패턴 정의 및 탐지 - Regex**
 ```python
@@ -102,7 +102,7 @@ print("\n정규식으로 찾은 객체:")
 for ent in regex_spans:
     print(f"{ent['entity_group']:6s} {ent['start']:4d}-{ent['end']:4d}  “{ent['word']}”")
 ```
-<figure><img src="../.gitbook/assets/오디오Regex.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/오디오Regex.png" alt=""><figcaption></figcaption></figure>
 
 #### **3-3 중복 구간 제거 및 병합 - Merge**
 ```python
@@ -129,4 +129,4 @@ for pii in unique_pii_spans:
     print(f"  - [{label:6s}] 위치({pii['start']:3d}~{pii['end']:3d}): “{pii['word']}”")
 ```
 
-<figure><img src="../.gitbook/assets/오디오Merge.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/오디오Merge.png" alt=""><figcaption></figcaption></figure>

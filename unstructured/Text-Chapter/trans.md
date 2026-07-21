@@ -47,4 +47,4 @@ print("\n수정된 전체 텍스트:")
 print(result)
 ```
 
-<figure><img src="../.gitbook/assets/텍스트수동변환.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/텍스트수동변환.png" alt=""><figcaption></figcaption></figure>

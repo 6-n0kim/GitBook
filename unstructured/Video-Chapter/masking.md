@@ -54,4 +54,4 @@ slider = widgets.IntSlider(value=0, min=0, max=len(masked_frames)-1, step=1, des
 widgets.interact(show_blurred, idx=slider)
 ```
 
-<figure><img src="../.gitbook/assets/image (4).png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (4).png" alt="" width="563"><figcaption></figcaption></figure>

@@ -50,4 +50,4 @@ plt.axis("off")
 plt.show()
 ```
 
-<figure><img src="../.gitbook/assets/image (7).png" alt="" width="537"><figcaption></figcaption></figure>
+<figure><img src="../../.gitbook/assets/image (7).png" alt="" width="537"><figcaption></figcaption></figure>
