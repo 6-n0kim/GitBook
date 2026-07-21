@@ -27,9 +27,9 @@ layout:
 !pip install -q transformers pillow matplotlib ultralytics facenet-pytorch
 ```
 
-자동차 번호판 탐지 모델(YOLOv8)
+자동차 번호판 탐지 모델(YOLOv26)
 
 ```python
 !wget https://huggingface.co/yasirfaizahmed/license-plate-object-detection/resolve/main/best.pt \
-     -O license_plate_yolov8.pt
+     -O license_plate_yolov26.pt
 ```
