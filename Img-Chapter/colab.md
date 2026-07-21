@@ -26,6 +26,8 @@ layout:
 * 1\. Colab 좌측 사이드바의 📁 \[파일] 아이콘을 클릭합니다.
 * 2\. 구글 드라이브에서 로컬에 받은 'test\_001.jpg' 파일 또는 확장자가 png인 test\_(숫자)을 좌측 파일 탐색기 창으로 \[드래그 앤 드롭] 해주세요.
 
+<figure><img src="../.gitbook/assets/이미지업로드.png" alt=""><figcaption></figcaption></figure>
+
 ```python
 import os
 from PIL import Image, ImageDraw, ImageFont, ImageFilter

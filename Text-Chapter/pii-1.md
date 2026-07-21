@@ -39,4 +39,4 @@ text_masked = anonymize_mask(text, unique_spans)
 print("마스킹 결과:\n", text_masked)
 ```
 
-<figure><img src="../.gitbook/assets/image (21).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/텍스트마스킹.png" alt=""><figcaption></figcaption></figure>
