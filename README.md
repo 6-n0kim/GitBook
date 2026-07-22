@@ -1,4 +1,5 @@
 ---
+icon: file-video
 layout:
   width: default
   title:
@@ -20,6 +21,7 @@ layout:
 ---
 
 # 비정형 데이터 비식별 실습
+
 ## Google Colaboratory 설치 (공통)
 
 1. 구글 로그인
