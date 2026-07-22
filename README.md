@@ -31,13 +31,13 @@ layout:
     [영상 비식별 실습 시작하기 →](video-chapter/colab.md)
 *   **이미지 비식별**: 얼굴/번호판 탐지, 바운딩 박스, 모자이크
 
-    [이미지 비식별 실습 시작하기 →](undefined/colab.md)
+    [이미지 비식별 실습 시작하기 →](img-chapter/colab.md)
 *   **음성 비식별**: STT, 음성 변조, TTS
 
-    [음성 비식별 실습 시작하기 →](undefined-1/colab.md)
+    [음성 비식별 실습 시작하기 →](audio-chapter/colab.md)
 *   **텍스트 비식별**: NER, 정규식 PII 검출, 마스킹
 
-    [텍스트 비식별 실습 시작하기 →](undefined-2/colab.md)
+    [텍스트 비식별 실습 시작하기 →](text-chapter/colab.md)
 
 **공통 사전 준비:**
 
