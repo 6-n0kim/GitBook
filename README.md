@@ -1,5 +1,4 @@
 ---
-icon: file-question-mark
 layout:
   width: default
   title:
@@ -20,17 +19,15 @@ layout:
     visible: true
 ---
 
-# 데이터 비식별 실습
+# README
 
 데이터 비식별화 실습을 위한 가이드입니다.
 
 ## 실습 유형 선택
 
-### [ 정형 데이터 비식별 실습 ](structured/README.md)
-### [ 정형 데이터 비식별 실습 ](../structured/README.md)
-### [ 정형 데이터 비식별 실습 ](./structured/README.md)
+### [정형 데이터 비식별 실습](structured/)
 
-### [ 비정형 데이터 비식별 실습](unstructured/README.md)
+### [비정형 데이터 비식별 실습](unstructured/)
 
 ## Google Colaboratory 설치 (공통)
 
