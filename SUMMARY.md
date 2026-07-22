@@ -6,7 +6,11 @@
 
 * [Colab 정형데이터 파일 업로드](data-cleansing/colab.md)
 * [필요한 라이브러리 다운로드](data-cleansing/lib.md)
-* [데이터 정제 적용](data-cleansing/cleansing.md)
+* [결측치 확인](data-cleansing/undefined.md)
+* [중복 데이터 확인](data-cleansing/undefined-1.md)
+* [이상치 확인](data-cleansing/undefined-2.md)
+* [데이터 형식 통일](data-cleansing/undefined-3.md)
+* [데이터 타입 변환](data-cleansing/undefined-4.md)
 
 ## 비식별처리 <a href="#pseudonymization" id="pseudonymization"></a>
 
