@@ -1,5 +1,5 @@
 ---
-icon: text-initial
+icon: file-type
 layout:
   width: default
   title:
