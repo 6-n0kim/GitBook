@@ -1,5 +1,5 @@
 ---
-icon: shield
+icon: shield-user
 layout:
   width: default
   title:

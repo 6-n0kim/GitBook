@@ -1,4 +1,5 @@
 ---
+icon: video
 layout:
   width: default
   title:

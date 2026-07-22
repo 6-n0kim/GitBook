@@ -1,4 +1,5 @@
 ---
+icon: text-initial
 layout:
   width: default
   title:

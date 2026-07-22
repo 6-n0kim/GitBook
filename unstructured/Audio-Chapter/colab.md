@@ -1,4 +1,5 @@
 ---
+icon: headphones
 layout:
   width: default
   title:
