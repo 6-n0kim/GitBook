@@ -21,15 +21,15 @@ layout:
 
 # 비식별화 실습 개요
 
-## 비식별화란? 
+## 비식별화란?
 
 데이터에 포함된 개인정보의 일부 또는 전부를 삭제하거나 다른 값으로 대체하여, 특정 개인을 식별하거나 유추할 수 없도록 만드는 일련의 과정
 
 ## 실습 유형 선택
 
-### [정형 데이터 비식별 실습](structured/)
+### [정형 데이터 비식별 실습](https://app.gitbook.com/o/mE45JhdDK045C8iNGaYQ/s/kglHjBTxfRfm9aypOkPz/)
 
-### [비정형 데이터 비식별 실습](unstructured/)
+### [비정형 데이터 비식별 실습](https://app.gitbook.com/o/mE45JhdDK045C8iNGaYQ/s/0V5at5oKeR0mTKjCjJzO/)
 
 ## Google Colaboratory 설치 (공통)
 
