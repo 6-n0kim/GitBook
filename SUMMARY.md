@@ -1,6 +1,6 @@
 # Table of contents
 
-* [비정형 데이터 비식별 실습 개요](README.md)
+* [비정형 데이터 비식별 실습](README.md)
 
 ## 영상 비식별 실습 <a href="#video-chapter" id="video-chapter"></a>
 
