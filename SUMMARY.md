@@ -1,7 +1,5 @@
 # Table of contents
 
-* [README](README.md)
-
 ## 정형 데이터 비식별 실습
 
 * [정형 데이터 비식별 실습 개요](structured/README.md)
@@ -13,6 +11,9 @@
 ## 비정형 데이터 비식별 실습
 
 * [비정형 데이터 비식별 실습 개요](unstructured/README.md)
+
+## 영상 비식별 실습
+* [Colab 비디오 파일 업로드](unstructured/Video-Chapter/colab.md)
 * [필요한 라이브러리 다운로드](unstructured/Video-Chapter/lib.md)
 * [비디오 모든 프레임 확인](unstructured/Video-Chapter/frame.md)
 * [얼굴 + 번호판 탐지 후 바운딩 박스 그리기](unstructured/Video-Chapter/+.md)
