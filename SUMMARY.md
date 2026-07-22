@@ -1,5 +1,7 @@
 # Table of contents
 
+* [README](README.md)
+
 ## 정형 데이터 비식별 실습
 
 * [정형 데이터 비식별 실습 개요](structured/README.md)
@@ -11,15 +13,13 @@
 ## 비정형 데이터 비식별 실습
 
 * [비정형 데이터 비식별 실습 개요](unstructured/README.md)
-* ### 영상 비식별 실습
-    * [Colab 비디오 파일 업로드](unstructured/Video-Chapter/colab.md)
 * [필요한 라이브러리 다운로드](unstructured/Video-Chapter/lib.md)
 * [비디오 모든 프레임 확인](unstructured/Video-Chapter/frame.md)
 * [얼굴 + 번호판 탐지 후 바운딩 박스 그리기](unstructured/Video-Chapter/+.md)
 * [blur(모자이크) 처리](unstructured/Video-Chapter/blur.md)
 * [masking(마스크) 처리](unstructured/Video-Chapter/masking.md)
 
-### 이미지 비식별 실습
+## 이미지 비식별 실습
 
 * [Colab 이미지 파일 업로드](unstructured/Img-Chapter/colab.md)
 * [필요한 라이브러리 다운로드](unstructured/Img-Chapter/lib.md)
@@ -28,7 +28,7 @@
 * [blur(모자이크) 처리](unstructured/Img-Chapter/blur.md)
 * [masking(마스크) 처리](unstructured/Img-Chapter/masking.md)
 
-### 음성 비식별 실습
+## 음성 비식별 실습
 
 * [Colab 음성 파일 업로드](unstructured/Audio-Chapter/colab.md)
 * [STT(Speech-to-Text) - Whisper](unstructured/Audio-Chapter/stt-speech-to-text-whisper.md)
@@ -37,7 +37,7 @@
 * [Pitch-Shift 변조](unstructured/Audio-Chapter/pitch-shift.md)
 * [TTS(Text-to-Speech) - gTTS](unstructured/Audio-Chapter/tts-text-to-speech-gtts.md)
 
-### 텍스트 비식별 실습
+## 텍스트 비식별 실습
 
 * [Colab 텍스트 파일 업로드](unstructured/Text-Chapter/colab.md)
 * [NER + 정규식 PII 검출](unstructured/Text-Chapter/ner-+-pii.md)
