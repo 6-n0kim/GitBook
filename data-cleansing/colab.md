@@ -1,6 +1,6 @@
 # Colab 정형데이터 파일 업로드
 
-### 1. 정형데이터 파일 업로드
+### **1. 정형데이터 파일 업로드**
 
 * 1\. Colab 좌측 사이드바의 📁 \[파일] 아이콘을 클릭합니다.
 * 2\. 구글 드라이브에서 로컬에 받은 'video\_01.mp4' 파일(또는 02, 03)을 좌측 파일 탐색기 창으로 \[드래그 앤 드롭] 해주세요.
@@ -21,5 +21,7 @@ except FileNotFoundError:
 print("데이터 정제 및 비식별처리를 시작합니다...\n")
 df.head(5)
 ```
+
+\[출력 결과]
 
 <figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
