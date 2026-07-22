@@ -1,5 +1,5 @@
 # Table of contents
-* [개요](README.md)
+* [비식별화 실습 개요](README.md)
 ## 정형 데이터 비식별 실습
 
 * [정형 데이터 비식별 실습 개요](structured/README.md)
