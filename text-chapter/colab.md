@@ -22,6 +22,8 @@ layout:
 
 # Colab 텍스트 파일 업로드
 
+[링크테스트 anonymization](https://app.gitbook.com/s/kglHjBTxfRfm9aypOkPz/)
+
 ### 1. **텍스트 업로드**
 
 * 1\. Colab 좌측 사이드바의 📁 \[파일] 아이콘을 클릭합니다.
