@@ -1,4 +1,5 @@
 ---
+icon: table
 layout:
   width: default
   title:
@@ -19,25 +20,20 @@ layout:
     visible: true
 ---
 
-# 비식별화 실습 개요
+# 정형 데이터 비식별 실습
 
-## 비식별화란? 
+CSV, Excel 등 구조화된 데이터에서 개인정보를 비식별화하는 실습입니다.
 
-데이터에 포함된 개인정보의 일부 또는 전부를 삭제하거나 다른 값으로 대체하여, 특정 개인을 식별하거나 유추할 수 없도록 만드는 일련의 과정
+**실습 내용:**
+- 데이터 정제 - Data Cleansing
+- 개인정보 비식별처리 (가명처리 / 익명처리)
+- 데이터 시각화 및 검증 ()
+- 결과 검증 및 내보내기
 
-## Google Colaboratory 설치 (공통)
+**대상 데이터:**
+- CSV 파일
+- Excel 파일
+- 데이터베이스 덤프 파일
+- JSON 형식의 구조화된 데이터
 
-1. 구글 로그인
-2. 구글 드라이브 접속
-3. 내 드라이브에서 우클릭
-4. 연결 더보기
-
-<figure><img src=".gitbook/assets/화면 캡처 2025-08-09 145855.png" alt="" width="254"><figcaption></figcaption></figure>
-
-5. \[Colaboratory] 검색 후 설치
-
-<figure><img src=".gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
-
-6. \[Colaboratory] 생성
-
-<figure><img src=".gitbook/assets/image (24).png" alt="" width="235"><figcaption></figcaption></figure>
+[정형 데이터 비식별 실습 시작하기 →](structured/README.md)
