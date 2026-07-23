@@ -39,7 +39,7 @@ clean_df.info()
 
 \[출력 결과]
 
-<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
 
 이 실습 데이터는 아래 10개 컬럼으로 구성되어 있습니다.
 

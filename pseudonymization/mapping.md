@@ -36,6 +36,6 @@ print("고유 id 개수:", process_df['record_id'].nunique(), "/ 매핑 테이�
 process_df[['이름', 'record_id']].head(5)
 ```
 
-\[출력결과]
+\[출력 결과]
 
 <figure><img src="../.gitbook/assets/image (23).png" alt=""><figcaption></figcaption></figure>

@@ -26,16 +26,22 @@ layout:
 식별 가능성이 높은 특정 항목이나 정보의 일부 구성 요소를 아예 삭제하여 식별 위험을 낮춥니다.
 
 ```python
-# ── record_id: 순차 코드 매핑 방식 ──
-unique_ids = process_df['record_id'].unique()
-id_map = {id: f"R{i+1:05d}" for i, id in enumerate(unique_ids)}
+# ── 주소: 부분삭제 방식 (앞 2개 토큰만 남기고 나머지 삭제) ──
+def partial_delete_address(addr):
+    tokens = addr.split()
+    return ' '.join(tokens[:2])
 
-process_df['record_id'] = process_df['record_id'].map(id_map)
+process_df['주소'] = process_df['주소'].apply(partial_delete_address)
 
-print("고유 id 개수:", process_df['record_id'].nunique(), "/ 매핑 테이블 크기:", len(id_map))
-process_df[['이름', 'record_id']].head(5)
+# 부분삭제 전/후를 담은 결과 데이터프레임 생성
+result = pd.DataFrame({
+    '처리전 주소': clean_df['주소'],
+    '주소': clean_df['주소'].apply(partial_delete_address)
+})
+
+result.head(5)
 ```
 
-\[출력결과]
+\[출력 결과]
 
-<figure><img src="../.gitbook/assets/image (23).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (27).png" alt=""><figcaption></figcaption></figure>
