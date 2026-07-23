@@ -8,8 +8,8 @@
 * [필요한 라이브러리 다운로드](data-cleansing/lib.md)
 * [결측치 확인 및 처리](data-cleansing/missing.md)
 * [중복 데이터 확인](data-cleansing/duplicate.md)
-* [이상치 확인](data-cleansing/outlier.md)
 * [데이터 형식 통일](data-cleansing/dtype.md)
+* [이상치 확인](data-cleansing/outlier.md)
 * [데이터 타입 변환](data-cleansing/format.md)
 
 ## 비식별처리 <a href="#pseudonymization" id="pseudonymization"></a>
