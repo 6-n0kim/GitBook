@@ -37,7 +37,7 @@ process_df['이름'] = process_df['이름'].apply(mask_name)
 # 마스킹 전/후를 담은 결과 데이터프레임 생성
 result = pd.DataFrame({
     '처리전 이름': clean_df['이름'],
-    '이름': clean_df['이름'].apply(mask_name)
+    '이름': process_df['이름']
 })
 
 result.head(5)

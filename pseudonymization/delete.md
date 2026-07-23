@@ -36,7 +36,7 @@ process_df['주소'] = process_df['주소'].apply(partial_delete_address)
 # 부분삭제 전/후를 담은 결과 데이터프레임 생성
 result = pd.DataFrame({
     '처리전 주소': clean_df['주소'],
-    '주소': clean_df['주소'].apply(partial_delete_address)
+    '주소': process_df['주소']
 })
 
 result.head(5)
