@@ -15,9 +15,10 @@
 ## 비식별처리 <a href="#pseudonymization" id="pseudonymization"></a>
 
 * [마스킹](pseudonymization/masking.md)
+* [부분 삭제](pseudonymization/delete.md)
+* [일련번호](pseudonymization/mapping.md)
+* [해시 함수](pseudonymization/hash.md)
 * [범주화](pseudonymization/categorization.md)
-* [원본 삭제](pseudonymization/delete.md)
-* [Untitled](pseudonymization/untitled.md)
 
 ***
 
