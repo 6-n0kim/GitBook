@@ -17,6 +17,7 @@
 * [마스킹](pseudonymization/masking.md)
 * [범주화](pseudonymization/categorization.md)
 * [원본 삭제](pseudonymization/delete.md)
+* [Untitled](pseudonymization/untitled.md)
 
 ***
 
