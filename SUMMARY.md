@@ -24,4 +24,6 @@
 
 ## 비식별처리 검증 <a href="#verification" id="verification"></a>
 
-* [Page 1](verification/page-1.md)
+* [K-익명성](verification/k.md)
+* [L-다양성](verification/l.md)
+* [T-근접성](verification/t.md)

@@ -29,6 +29,9 @@ layout:
 <figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
 
 ```python
+import pandas as pd
+import numpy as np
+
 target_file = "testdata_missing.csv"
 
 try:
@@ -38,9 +41,6 @@ try:
 except FileNotFoundError:
     print(f"오류: '{target_file}' 파일을 찾을 수 없습니다. 파일명이나 경로를 확인해주세요.")
     exit()
-
-import pandas as pd
-import numpy as np
 
 pd.set_option('display.float_format', '{:.0f}'.format)
 clean_df = origin_df.copy()
