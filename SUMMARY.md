@@ -11,6 +11,7 @@
 * [데이터 형식 통일](data-cleansing/dtype.md)
 * [이상치 확인](data-cleansing/outlier.md)
 * [데이터 타입 변환](data-cleansing/format.md)
+* [정제 결과](data-cleansing/result.md)
 
 ## 비식별처리 <a href="#pseudonymization" id="pseudonymization"></a>
 
@@ -19,6 +20,7 @@
 * [일련번호](pseudonymization/mapping.md)
 * [해시 함수](pseudonymization/hash.md)
 * [범주화](pseudonymization/categorization.md)
+* [비식별처리 결과](pseudonymization/result.md)
 
 ***
 
