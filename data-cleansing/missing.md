@@ -32,6 +32,8 @@ print(clean_df.isnull().sum())
 
 <figure><img src="../.gitbook/assets/image (10).png" alt=""><figcaption></figcaption></figure>
 
+***
+
 이 실습 데이터에는 아래처럼 컬럼별로 결측치가 섞여 있습니다.
 
 | 컬럼    | 결측치 수 | 비율 | 데이터 유형 |

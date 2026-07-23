@@ -25,13 +25,13 @@ layout:
 
 구체적인 수치나 단일값을 일정한 범위나 구간으로 묶어서 대표값으로 표현합니다.
 
-* 1- `금액`과 `거래후잔액`은 정확한 금액 대신 십만 단위로 범주화
+* &#x20;`금액`과 `거래후잔액` : 정확한 금액 대신 십만 단위로 범주화
 
 ```python
 # 1. 구간 문자열 생성 함수 정의
 def make_range_str(series, decimals=100_000):
     lower = (np.floor(series / decimals) * decimals).astype(int)
-    upper = (np.ceil(series / decimals) * decimals).astype(int)
+    upper = lower + decimals
     return lower.astype(str) + ' ~ ' + upper.astype(str)
 
 # 2. 구간 설정 자리 수 설정
@@ -58,7 +58,7 @@ result.head(5)
 
 
 
-* 2- `생년월일`은 현재 날짜에 따른 연령대로 범주화
+* `생년월일` : 현재 날짜에 따른 연령대로 범주화
 
 ```python
 # 실행 시점의 '현재 날짜' 가져오기

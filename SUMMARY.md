@@ -4,8 +4,8 @@
 
 ## 데이터 정제 <a href="#data-cleansing" id="data-cleansing"></a>
 
-* [Colab 정형데이터 파일 업로드](data-cleansing/colab.md)
 * [필요한 라이브러리 다운로드](data-cleansing/lib.md)
+* [Colab 정형데이터 파일 업로드](data-cleansing/colab.md)
 * [결측치 확인 및 처리](data-cleansing/missing.md)
 * [중복 데이터 확인](data-cleansing/duplicate.md)
 * [데이터 형식 통일](data-cleansing/dtype.md)
@@ -22,9 +22,6 @@
 * [범주화](pseudonymization/categorization.md)
 * [비식별처리 결과](pseudonymization/result.md)
 
-***
+## 비식별처리 검증 <a href="#verification" id="verification"></a>
 
-* [비식별화 기법](anonymization.md)
-* [데이터 전처리](preprocessing.md)
-* [CSV/Excel 파일 업로드](upload.md)
-* [결과 검증](validation.md)
+* [Page 1](verification/page-1.md)

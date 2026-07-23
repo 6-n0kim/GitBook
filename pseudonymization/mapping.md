@@ -25,8 +25,10 @@ layout:
 
 고유값마다 순차적인 일련번호를 매핑하여 원본 데이터의 직접적인 식별을 차단합니다.
 
+* `record_id`  : 순차 코드 매핑
+
 ```python
-# ── record_id: 일련번호방식 ──
+# ── record_id: 일련번호 방식 ──
 unique_ids = process_df['record_id'].unique()
 id_map = {id: f"R{i+1:05d}" for i, id in enumerate(unique_ids)}
 

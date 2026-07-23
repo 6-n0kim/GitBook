@@ -21,7 +21,7 @@ layout:
 
 # Colab 정형데이터 파일 업로드
 
-### **1. 정형데이터 파일 업로드**
+### **2. 정형데이터 파일 업로드**
 
 * 1\. Colab 좌측 사이드바의 📁 \[파일] 아이콘을 클릭합니다.
 * 2\. 구글 드라이브에서 로컬에 받은 'testdata\_missing.csv' 파일을 좌측 파일 탐색기 창으로 \[드래그 앤 드롭] 해주세요.
@@ -39,10 +39,22 @@ except FileNotFoundError:
     print(f"오류: '{target_file}' 파일을 찾을 수 없습니다. 파일명이나 경로를 확인해주세요.")
     exit()
 
+import pandas as pd
+import numpy as np
+
+pd.set_option('display.float_format', '{:.0f}'.format)
+clean_df = origin_df.copy()
+
 print("데이터 정제 및 비식별처리를 시작합니다...\n")
-origin_df.head(5)
+clean_df.head(5)
 ```
 
 \[출력 결과]
 
 <figure><img src="../.gitbook/assets/image (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+
+***
+
+이 실습 데이터는 아래 10개 컬럼으로 구성되어 있습니다.
+
+<table data-search="false"><thead><tr><th>컬럼명</th><th>설명</th><th>예시</th></tr></thead><tbody><tr><td>record_id</td><td>레코드 고유번호</td><td>R00001</td></tr><tr><td>이름</td><td>고객명</td><td>최예준</td></tr><tr><td>주소</td><td>주소</td><td>인천광역시 서초구 강남대로 152</td></tr><tr><td>생년월일</td><td>생년월일</td><td>1992-11-07</td></tr><tr><td>은행명</td><td>은행명</td><td>국민은행</td></tr><tr><td>계좌번호</td><td>계좌번호</td><td>130-21-329258</td></tr><tr><td>거래일시</td><td>거래 발생 일시</td><td>2024-12-27 10:13:36</td></tr><tr><td>거래유형</td><td>입금/출금/이체/송금/결제</td><td>입금</td></tr><tr><td>금액</td><td>거래 금액</td><td>1154556</td></tr><tr><td>거래후잔액</td><td>거래 후 계좌 잔액</td><td>2588468</td></tr></tbody></table>

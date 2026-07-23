@@ -25,11 +25,13 @@ layout:
 
 식별 가능성이 높은 특정 항목이나 정보의 일부 구성 요소를 아예 삭제하여 식별 위험을 낮춥니다.
 
+* `주소`  :  앞 1개 토큰만 남기고 삭제
+
 ```python
-# ── 주소: 부분삭제 방식 (앞 2개 토큰만 남기고 나머지 삭제) ──
+# ── 주소: 부분삭제 방식 ──
 def partial_delete_address(addr):
     tokens = addr.split()
-    return ' '.join(tokens[:2])
+    return ' '.join(tokens[:1])
 
 process_df['주소'] = process_df['주소'].apply(partial_delete_address)
 
@@ -44,4 +46,4 @@ result.head(5)
 
 \[출력 결과]
 
-<figure><img src="../.gitbook/assets/image (27).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (37).png" alt=""><figcaption></figcaption></figure>
