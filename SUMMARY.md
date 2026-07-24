@@ -8,8 +8,8 @@
 * [필요한 라이브러리 다운로드](video-chapter/lib.md)
 * [비디오 모든 프레임 확인](video-chapter/frame.md)
 * [얼굴 + 번호판 탐지 후 바운딩 박스 그리기](video-chapter/+.md)
-* [blur(모자이크) 처리](video-chapter/blur.md)
-* [masking(마스크) 처리](video-chapter/masking.md)
+* [blur(블러) 처리](video-chapter/blur.md)
+* [masking(마스킹) 처리](video-chapter/masking.md)
 
 ## 이미지 비식별 실습 <a href="#img-chapter" id="img-chapter"></a>
 
@@ -17,8 +17,8 @@
 * [필요한 라이브러리 다운로드](img-chapter/lib.md)
 * [얼굴 + 번호판 탐지 후 바운딩 박스 그리기](img-chapter/+.md)
 * [바운딩 박스 좌표 구하기](img-chapter/bounding.md)
-* [blur(모자이크) 처리](img-chapter/blur.md)
-* [masking(마스크) 처리](img-chapter/masking.md)
+* [blur(블러) 처리](img-chapter/blur.md)
+* [masking(마스킹) 처리](img-chapter/masking.md)
 
 ## 음성 비식별 실습 <a href="#audio-chapter" id="audio-chapter"></a>
 

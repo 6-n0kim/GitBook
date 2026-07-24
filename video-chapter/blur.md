@@ -19,11 +19,11 @@ layout:
     visible: true
 ---
 
-# blur(모자이크) 처리
+# blur(블러) 처리
 
 ### **4. 블러 기능 및 적용**
 
-* 해당 영역을 **Gaussian Blur**를 사용해 흐리게 만듭니다.
+* 탐지된 영역의 픽셀 값들을 평균화하여 경계와 상세 형태를 부드럽게 뭉개는 방식입니다.
 * 이는 얼굴의 시각적 식별을 방지하기 위한 **비식별화 처리 방법 중 하나**입니다.
 
 ```python
@@ -61,4 +61,4 @@ slider = widgets.IntSlider(value=0, min=0, max=len(blurred_frames)-1, step=1, de
 widgets.interact(show_blurred, idx=slider)
 ```
 
-<figure><img src="../../.gitbook/assets/image (3).png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (3).png" alt="" width="563"><figcaption></figcaption></figure>

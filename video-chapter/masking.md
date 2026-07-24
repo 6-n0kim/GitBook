@@ -19,11 +19,11 @@ layout:
     visible: true
 ---
 
-# masking(마스크) 처리
+# masking(마스킹) 처리
 
 ### **5. 마스킹 기능 및 적용**
 
-* 탐지된 얼굴 영역을 **검은색 사각형**으로 완전히 덮어 가리는 방식입니다.
+* 탐지된 영역의 픽셀 정보를 지정된 단색(예: Black, White) RGB 값으로 대체하여 원본 데이터를 완전히 덮어씌우는 방식입니다.
 * 이 방식은 가장 강력한 비식별화 처리 중 하나로, 얼굴 정보를 **완전히 차단**합니다.
 
 ```python
@@ -54,4 +54,4 @@ slider = widgets.IntSlider(value=0, min=0, max=len(masked_frames)-1, step=1, des
 widgets.interact(show_blurred, idx=slider)
 ```
 
-<figure><img src="../../.gitbook/assets/image (4).png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (4).png" alt="" width="563"><figcaption></figcaption></figure>
