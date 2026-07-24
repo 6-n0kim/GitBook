@@ -44,9 +44,9 @@ for col in target_cols:
 # 범주화 전/후를 담은 결과 데이터프레임 생성
 result = pd.DataFrame({
     '처리전 금액': clean_df['금액'],
-    '금액': process_df['금액'],
+    '처리후 금액': process_df['금액'],
     '처리전 거래후잔액': clean_df['거래후잔액'],
-    '거래후잔액': process_df['거래후잔액'],
+    '처리후 거래후잔액': process_df['거래후잔액'],
 })
 
 result.head(5)
@@ -54,7 +54,7 @@ result.head(5)
 
 \[출력 결과]
 
-<figure><img src="../.gitbook/assets/image (32).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (65).png" alt=""><figcaption></figcaption></figure>
 
 
 

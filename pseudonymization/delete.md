@@ -28,7 +28,7 @@ layout:
 * `주소`  :  앞 1개 토큰만 남기고 삭제
 
 ```python
-# ── 주소: 부분삭제 방식 ──
+# ── 주소: 광역/기초 지자체(시) 단위만 남김 (부분삭제 방식) ──
 def partial_delete_address(addr):
     tokens = addr.split()
     return ' '.join(tokens[:1])
@@ -38,7 +38,7 @@ process_df['주소'] = process_df['주소'].apply(partial_delete_address)
 # 부분삭제 전/후를 담은 결과 데이터프레임 생성
 result = pd.DataFrame({
     '처리전 주소': clean_df['주소'],
-    '주소': process_df['주소']
+    '처리후 주소': process_df['주소']
 })
 
 result.head(5)
@@ -46,4 +46,4 @@ result.head(5)
 
 \[출력 결과]
 
-<figure><img src="../.gitbook/assets/image (37).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (62).png" alt=""><figcaption></figcaption></figure>

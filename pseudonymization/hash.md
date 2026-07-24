@@ -42,7 +42,7 @@ process_df['계좌번호'] = process_df['계좌번호'].apply(pseudonymize_accou
 # 해시 처리 전/후를 담은 결과 데이터프레임 생성
 result = pd.DataFrame({
     '처리전 계좌번호': clean_df['계좌번호'],
-    '계좌번호': process_df['계좌번호']
+    '처리후 계좌번호': process_df['계좌번호']
 })
 
 result.head(5)
@@ -50,7 +50,7 @@ result.head(5)
 
 \[출력 결과]
 
-<figure><img src="../.gitbook/assets/image (29).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (64).png" alt=""><figcaption></figcaption></figure>
 
 > ⚠️ **salt를 사용하는 이유**: salt 없이 `hash(계좌번호)`만 쓰면, 공격자가 가능한 계좌번호 조합을 미리 다 해시해둔 표와 대조해서 원본을 역산할 수 있습니다. salt를 붙이면 동일한 해시 알고리즘이라도 salt를 모르는 이상 역산이 사실상 불가능해집니다
 
