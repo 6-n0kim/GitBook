@@ -23,7 +23,7 @@ layout:
 
 ### **5. 마스킹 기능 및 적용**
 
-* 탐지된 ㄱ 영역을 **검은색 사각형**으로 완전히 덮어 가리는 방식입니다.
+* 탐지된 영역을 픽셀단위로 색상을 변경하여 가리는 방식입니다.
 * 이 방식은 가장 강력한 비식별화 처리 중 하나로, 얼굴 정보를 **완전히 차단**합니다.
 
 ```python
@@ -47,4 +47,4 @@ plt.axis("off")
 plt.show()
 ```
 
-<figure><img src="../../.gitbook/assets/image (8).png" alt="" width="540"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (8).png" alt="" width="540"><figcaption></figcaption></figure>
