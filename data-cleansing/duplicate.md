@@ -39,4 +39,4 @@ clean_df = clean_df.drop_duplicates()
 
 \[출력 결과]
 
-<figure><img src="../.gitbook/assets/image (36).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (52).png" alt=""><figcaption></figcaption></figure>

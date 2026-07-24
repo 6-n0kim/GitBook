@@ -37,7 +37,12 @@ target_file = "testdata_missing.csv"
 try:
     # CSV 파일 읽기
     origin_df = pd.read_csv(target_file)
-    print(f"'{target_file}' 파일을 성공적으로 불러왔습니다!\n")
+    print(f"'{target_file}' 파일을 성공적으로 불러왔습니다!")
+    
+    # 요청하신 형식으로 행/열 개수 출력
+    print(f"총 행 - {origin_df.shape[0]}")
+    print(f"총 열 - {origin_df.shape[1]}")
+
 except FileNotFoundError:
     print(f"오류: '{target_file}' 파일을 찾을 수 없습니다. 파일명이나 경로를 확인해주세요.")
     exit()
@@ -45,13 +50,12 @@ except FileNotFoundError:
 pd.set_option('display.float_format', '{:.0f}'.format)
 clean_df = origin_df.copy()
 
-print("데이터 정제 및 비식별처리를 시작합니다...\n")
-clean_df.head(5)
+display(clean_df.head(5))
 ```
 
 \[출력 결과]
 
-<figure><img src="../.gitbook/assets/image (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (51).png" alt=""><figcaption></figcaption></figure>
 
 ***
 

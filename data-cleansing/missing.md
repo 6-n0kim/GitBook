@@ -21,6 +21,13 @@ layout:
 
 # 결측치 확인 및 처리
 
+결측치란 값이 누락되거나 존재하지 않는 데이터를 말합니다.
+
+> 결측치는 주로 null(None) 또는 NaN(Not a Number)으로 표기됩니다.
+>
+> * null은 메모리상에 '값의 부재(아예 존재하지 않음)'를 뜻합니다.
+> * NaN은 수치형 컬럼에서 값이 누락되었거나, 0/0과 같은 수학적 불능 연산, 또는 "홍길동" 같은 문자열을 수치형으로 강제 변환할 때 발생합니다.
+
 ### **3-1. 결측치 확인**
 
 ```python
@@ -36,14 +43,14 @@ print(clean_df.isnull().sum())
 
 이 실습 데이터에는 아래처럼 컬럼별로 결측치가 섞여 있습니다.
 
-| 컬럼    | 결측치 수 | 비율 | 데이터 유형 |
-| ----- | ----- | -- | ------ |
-| 금액    | 300   | 3% | 수치형    |
-| 거래후잔액 | 300   | 3% | 수치형    |
-| 은행명   | 200   | 2% | 범주형    |
-| 거래유형  | 200   | 2% | 범주형    |
-| 생년월일  | 100   | 1% | 개인정보성  |
-| 주소    | 100   | 1% | 개인정보성  |
+| 컬럼    | 결측치 수 | 비율 | 데이터 타입 | 비고    |
+| ----- | ----- | -- | ------ | ----- |
+| 금액    | 300   | 3% | 수치형    |       |
+| 거래후잔액 | 300   | 3% | 수치형    |       |
+| 은행명   | 200   | 2% | 범주형    |       |
+| 거래유형  | 200   | 2% | 범주형    |       |
+| 생년월일  | 100   | 1% | 날짜형    | 개인정보성 |
+| 주소    | 100   | 1% | 문자형    | 개인정보성 |
 
 ### **3-2. 결측치 처리**
 
@@ -53,7 +60,7 @@ print(clean_df.isnull().sum())
   * **중앙값**: 주어진 숫자들을 크기 순서대로 나열했을 때 정확히 가장 가운데에 위치하는 값
 * **2) 범주형 컬럼** (`은행명`, `거래유형`): **최빈값** 으로 대치, 혹은 '결측' 카테고리로 별도 표시
   * **최빈값**: 주어진 자료 중에서 가장 자주 나타나는(빈도수가 높은) 값
-* **3) 개인정보 컬럼** (`생년월일`, `주소`): 임의로 채우지 않고 해당 행을 삭제하거나 원본 소스에서 재확인 (잘못 추정한 개인정보를 채워 넣는 것 자체가 위험할 수 있음)
+* **3) 개인정보성 컬럼** (`생년월일`, `주소`): 임의로 채우지 않고 해당 행을 삭제하거나 원본 소스에서 재확인 (잘못 추정한 개인정보를 채워 넣는 것 자체가 위험할 수 있음)
 
 1\) 수치형 컬럼
 
@@ -62,13 +69,40 @@ print(clean_df.isnull().sum())
 * **왜도**는 데이터 분포가 평균을 중심으로 얼마나 좌우 비대칭인지 나타내는 통계적 지표입니다. 분포가 대칭인 정규분포의 왜도는 0입니다.
 
 ```python
-print("금액 왜도:", clean_df['금액'].skew())
-print("거래후잔액 왜도:", clean_df['거래후잔액'].skew())
+import matplotlib.pyplot as plt
+import matplotlib.font_manager as fm
+import matplotlib.ticker as mticker
+import seaborn as sns
+
+fm.fontManager.addfont('/usr/share/fonts/truetype/nanum/NanumGothic.ttf')
+plt.rcParams['font.family'] = 'NanumGothic'
+plt.rcParams['axes.unicode_minus'] = False
+
+fig, axes = plt.subplots(1, 2, figsize=(12, 5))
+
+sns.kdeplot(clean_df['금액'], ax=axes[0], color='skyblue', linewidth=2)
+axes[0].set_title(f"금액 분포 (왜도: {clean_df['금액'].skew():.2f})")
+axes[0].set_xlabel("금액")
+axes[0].set_ylabel("밀도")
+axes[0].set_yticks([])
+axes[0].xaxis.set_major_formatter(mticker.FuncFormatter(lambda x, pos: f'{x:,.0f}'))
+axes[0].tick_params(axis='x', rotation=30)
+
+sns.kdeplot(clean_df['거래후잔액'], ax=axes[1], color='orange', linewidth=2)
+axes[1].set_title(f"거래후잔액 분포 (왜도: {clean_df['거래후잔액'].skew():.2f})")
+axes[1].set_xlabel("거래후잔액")
+axes[1].set_ylabel("밀도")
+axes[1].set_yticks([])
+axes[1].xaxis.set_major_formatter(mticker.FuncFormatter(lambda x, pos: f'{x:,.0f}'))
+axes[1].tick_params(axis='x', rotation=30)
+
+plt.tight_layout()
+plt.show()
 ```
 
 \[출력 결과]
 
-<figure><img src="../.gitbook/assets/image (11).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (57).png" alt=""><figcaption></figcaption></figure>
 
 | 컬럼    | 왜도(skewness) | 분포 특징                        | 권장 대치 방식        |
 | ----- | ------------ | ---------------------------- | --------------- |
@@ -137,7 +171,7 @@ print(clean_df.loc[missing_idx, ['은행명', '거래유형']])
 
 <figure><img src="../.gitbook/assets/image (15).png" alt=""><figcaption></figcaption></figure>
 
-3\) 개인정보 컬럼
+3\) 개인정보성 컬럼
 
 ```python
 # 1. '생년월일' 또는 '주소'에 결측치가 있는 행의 인덱스 추출
