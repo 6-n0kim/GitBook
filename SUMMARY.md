@@ -35,3 +35,7 @@
 * [합성 적용 - 2. 순차적 CART 합성](synthetic/cart-2.md)
 * [합성 적용 - 3. 수치형 변환](synthetic/cart-3.md)
 * [합성 결과 확인](synthetic/result.md)
+
+***
+
+* [전체 데이터 비교](cart-3.md)
