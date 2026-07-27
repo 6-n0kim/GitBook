@@ -33,7 +33,8 @@
 * [합성 함수 정의](synthetic/definition.md)
 * [합성 적용 - 1. 무작위 재추출](synthetic/cart-1.md)
 * [합성 적용 - 2. 순차적 CART 합성](synthetic/cart-2.md)
-* [합성 적용 - 3. 수치형 변환](synthetic/cart-3.md)
+* [합성 적용 - 3. 수치형 CART 합성](synthetic/cart-3.md)
+* [합성 적용 - 4. 별도 처리](synthetic/cart-4.md)
 * [합성 결과 확인](synthetic/result.md)
 
 ***

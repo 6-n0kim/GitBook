@@ -34,4 +34,4 @@ display(synth_df.head())
 
 \[출력 결과]
 
-<figure><img src=".gitbook/assets/image (66).png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/image (72).png" alt=""><figcaption></figcaption></figure>
