@@ -21,9 +21,9 @@ layout:
 
 # 합성 결과 확인
 
-### 4. 합성 결과 확인
+### **5-1.** 합성 결과 확인
 
-합성 데이터가 실제 데이터의 컬럼별 분포를 얼마나 잘 재현했는지(통계적 유사성)를 확인하고, 실제 레코드와 완전히 일치하는 합성 행이 있는지(재식별 위험)를 함께 점검합니다.
+합성 데이터가 실제 데이터의 컬럼별 분포를 얼마나 잘 재현했는지(통계적 유사성)를 확인합니다.
 
 ```python
 import matplotlib.pyplot as plt
@@ -62,3 +62,23 @@ plt.show()
 \[출력 결과]
 
 <figure><img src="../.gitbook/assets/image (50).png" alt=""><figcaption></figcaption></figure>
+
+### 5. 합성 결과 확인
+
+&#x20;실제 레코드와 완전히 일치하는 합성 행이 있는지(재식별 위험)를 함께 점검합니다.
+
+> record\_id와 계좌번호는 합성 단계에서 새로 부여한 값이라 비교 대상에서 제외하고 나머지 컬럼이 전부 일치하는 행이 있는지 봅니다.
+
+```python
+compare_cols = [c for c in process_df.columns if c not in ['record_id', '계좌번호']]
+
+dup_check = synth_df[compare_cols].merge(process_df[compare_cols], how='inner')
+
+print(f"실제 레코드와 완전히 동일한 합성 행: {len(dup_check)}건 / {len(synth_df)}건 "
+      f"({len(dup_check)/len(synth_df)*100:.2f}%)")
+display(dup_check.head())
+```
+
+\[출력 결과]
+
+<figure><img src="../.gitbook/assets/image (73).png" alt=""><figcaption></figcaption></figure>
