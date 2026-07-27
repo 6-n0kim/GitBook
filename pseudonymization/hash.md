@@ -32,7 +32,7 @@ import hashlib
 
 # ── 계좌번호: 해시 함수(SHA-256) 기반 가명처리 ──
 # salt는 외부에 노출되지 않도록 별도로 안전하게 관리해야 합니다.
-SALT = "forte_practice_salt_2026"
+SALT = "practice_salt_2026"
 
 def pseudonymize_account(acc, salt=SALT):
     return hashlib.sha256((acc + salt).encode()).hexdigest()[:16]  # 앞 16자리만 사용

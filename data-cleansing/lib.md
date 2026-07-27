@@ -30,3 +30,9 @@ CSV 파일 입출력 및 수치 연산을 수행할 핵심 라이브러리(Panda
 ```
 
 ***
+
+그래프 출력 시 한글이 깨지지 않도록 폰트 설치
+
+```python
+!apt-get -qq install fonts-nanum > /dev/null 2>&1
+```
