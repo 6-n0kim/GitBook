@@ -37,7 +37,7 @@ print(clean_df.isnull().sum())
 
 \[출력 결과]
 
-<figure><img src="../.gitbook/assets/image (10).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (75).png" alt=""><figcaption></figcaption></figure>
 
 ***
 
@@ -45,12 +45,12 @@ print(clean_df.isnull().sum())
 
 | 컬럼    | 결측치 수 | 비율 | 데이터 타입 | 비고    |
 | ----- | ----- | -- | ------ | ----- |
-| 금액    | 300   | 3% | 수치형    |       |
-| 거래후잔액 | 300   | 3% | 수치형    |       |
+| 금액    | 302   | 3% | 수치형    |       |
+| 거래후잔액 | 301   | 3% | 수치형    |       |
 | 은행명   | 200   | 2% | 범주형    |       |
 | 거래유형  | 200   | 2% | 범주형    |       |
 | 생년월일  | 100   | 1% | 날짜형    | 개인정보성 |
-| 주소    | 100   | 1% | 문자형    | 개인정보성 |
+| 주소    | 101   | 1% | 문자형    | 개인정보성 |
 
 ### **3-2. 결측치 처리**
 
