@@ -29,3 +29,7 @@ layout:
 
 <figure><img src="../.gitbook/assets/image (35).png" alt=""><figcaption></figcaption></figure>
 
+```python
+final_file = '000_data.csv'
+000_df.to_csv(final_file, index=False, encoding='utf-8-sig')
+```
