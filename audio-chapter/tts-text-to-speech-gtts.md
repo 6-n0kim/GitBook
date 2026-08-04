@@ -26,6 +26,8 @@ layout:
 * PII을 수동으로 치환한 후, 한국어 TTS로 다시 음성 합성합니다.
 * (음성 -> 텍스트)로 전환 후 개인정보를 찾았기 때문에 (텍스트 -> 음성) 다시 전환해 주는 작업입니다.
 
+> 전체 실행 시 수동 수정이 안 되는 경우가 있습니다. 이 경우 해당 셀만 재실행하시면 정상 작동합니다.
+
 ```python
 !pip install -q gTTS
 ```
@@ -61,4 +63,4 @@ print("\nTTS 합성된 음성 재생:")
 display(Audio(data=buf.read(), rate=24000))
 ```
 
-<figure><img src="../../.gitbook/assets/오디오Gtts.png" alt="" width="559"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/오디오Gtts.png" alt="" width="559"><figcaption></figcaption></figure>
