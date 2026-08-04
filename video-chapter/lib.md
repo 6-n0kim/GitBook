@@ -21,7 +21,7 @@ layout:
 
 # 필요한 라이브러리 다운로드
 
-torch 관련 다운로드및 버전 일
+torch 관련 다운로드및 버전
 
 ```python
 # !pip install numpy==1.23.5
