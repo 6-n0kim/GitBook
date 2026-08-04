@@ -24,7 +24,6 @@ layout:
 ### 2. **모든 프레임 확인**
 
 * 영상이 잘 업로드 되었는지 확인하기 위해 모든 프레임을 확인합니다.
-* 위 슬라이더 UI를 이동하여 확인 가능.
 
 ```python
 import numpy as np
@@ -56,4 +55,4 @@ slider = widgets.IntSlider(value=0, min=0, max=len(frames)-1, step=1, descriptio
 widgets.interact(show_frame, idx=slider)
 ```
 
-<figure><img src="../../.gitbook/assets/image (1).png" alt="" width="563"><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1).png" alt="" width="563"><figcaption></figcaption></figure>
